@@ -172,7 +172,7 @@ The resolved IP address should match the `api` pod's IP address
 kubectl  port-forward svc/frontend 9090:9090 --context ${CLIENT_CONTEXT}
 ```
 
-2. Open browser to `http://localhost:9090`
+2. Open browser to `http://localhost:9090/ui`
 
 3. Confirm boxes are not red, and DNS name is resolved.
 

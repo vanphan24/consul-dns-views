@@ -6,7 +6,8 @@ The Consul client cluster will include a Consul DNS Proxy that will proxy all Co
 
 
 ![alt text](https://github.com/vanphan24/consul-dns-views/blob/main/images/dns-views1.png)
-![alt text](https://github.com/vanphan24/consul-dns-views/blob/main/images/dns-views2.png)
+
+![alt text](https://github.com/vanphan24/consul-dns-views/blob/main/images/dns-views-2.png)
 
 # Pre-reqs
 

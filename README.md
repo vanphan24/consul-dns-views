@@ -4,6 +4,8 @@ This demo will the latest Consul DNS Views feature for Kubernetes Consul 1.20. T
 This demo will deploy two Consul clusters on Kubernetes, a server cluster in the default parttion and a client cluster in a partition called 'ap1'. We will use Azure Kuberntes Service (AKS) although any Kubernetes cluster should work.
 The Consul client cluster will include a Consul DNS Proxy that will proxy all Consul DNS queries and return the appropriate response. 
 
+The step in this repo closely follow steps for setting up Admin Partitions in the Consul docs: https://developer.hashicorp.com/consul/docs/enterprise/admin-partitions#deploying-consul-with-admin-partitions-on-kubernetes
+
 
 ![alt text](https://github.com/vanphan24/consul-dns-views/blob/main/images/dns-views1.png)
 

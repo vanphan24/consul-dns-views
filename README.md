@@ -5,7 +5,8 @@ This demo will deploy two Consul clusters on Kubernetes, a server cluster in the
 The Consul client cluster will include a Consul DNS Proxy that will proxy all Consul DNS queries and return the appropriate response. 
 
 
-![alt text](https://github.com/vanphan24/cluster-peering-demo/blob/main/images/Screen%20Shot%202022-08-18%20at%2010.40.40%20AM.png "Cluster Peering Demo")
+![alt text](https://github.com/vanphan24/consul-dns-views/blob/main/images/dns-views1.png)
+![alt text](https://github.com/vanphan24/consul-dns-views/blob/main/images/dns-views2.png)
 
 # Pre-reqs
 

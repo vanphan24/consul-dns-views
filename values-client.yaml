@@ -1,0 +1,50 @@
+global:
+  enabled: false
+  enableConsulNamespaces: true
+#  image: hashicorp/consul-enterprise:1.20.0-ent
+  image: docker.mirror.hashicorp.services/hashicorppreview/consul-enterprise:1.20-dev
+  imageConsulDataplane: hashicorppreview/consul-dataplane:1.6.0-dev   
+
+  adminPartitions:
+    enabled: true
+    name: ap1
+  tls:
+    enabled: true
+    caCert:
+      secretName: server-consul-ca-cert 
+      secretKey: tls.crt
+    caKey:
+      secretName: server-consul-ca-key 
+      secretKey: tls.key
+  acls:
+    manageSystemACLs: true
+    bootstrapToken:
+      secretName: server-consul-partitions-acl-token 
+      secretKey: token
+  enterpriseLicense:
+    secretName: license
+    secretKey: key
+externalServers:
+  enabled: true
+  hosts: [48.216.183.98]  # Change this value with the external consul server service's IP address.
+  tlsServerName: server.dc1.consul
+  k8sAuthMethodHost: https://dc4-dns-sgf78yij.hcp.eastus.azmk8s.io:443  # Change this value with your second Kube cluster's API server IP address
+
+meshGateway:
+  enabled: true
+
+syncCatalog:
+  enabled: true
+  toConsul: true
+  toK8S: false
+  addK8SNamespaceSuffix: false
+  ingress:
+    enabled: true
+    loadBalancerIPs: true    
+
+dns:
+  enabled: true
+  proxy:
+    enabled: true 
+    replicas: 2
+    type: LoadBalancer

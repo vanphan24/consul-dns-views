@@ -176,5 +176,5 @@ kubectl  port-forward svc/frontend 9090:9090 --context ${CLIENT_CONTEXT}
 
 3. Confirm boxes are not red, and DNS name is resolved.
 
-![alt text](   )
- 
+![alt text](https://github.com/vanphan24/consul-dns-views/blob/main/images/dns-views-fake-service.png)
+

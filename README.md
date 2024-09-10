@@ -86,9 +86,9 @@ kubectl config view --output "jsonpath={.clusters[?(@.name=='${CLIENT_CONTEXT}')
 ```
 4.  Copy the 3 secrets (consul-ca-cert, consul-cs-kay, and consul-partition-acl-token) from the first Kubernetes cluster to the second Kubernetes cluster.
 ```
-kubectl get secret ${HELM_RELEASE_SERVER}-consul-ca-cert --context ${SERVER_CONTEXT} -n consul --output yaml | kubectl apply --namespace consul --context ${CLIENT_CONTEXT} --filename -
-kubectl get secret ${HELM_RELEASE_SERVER}-consul-ca-key --context ${SERVER_CONTEXT} --namespace consul --output yaml | kubectl apply --namespace consul --context ${CLIENT_CONTEXT} --filename -
-kubectl get secret ${HELM_RELEASE_SERVER}-consul-partitions-acl-token --context ${SERVER_CONTEXT} --namespace consul --output yaml | kubectl apply --namespace consul --context ${CLIENT_CONTEXT} --filename -
+kubectl get secret ${HELM_RELEASE_SERVER}-consul-ca-cert --context ${SERVER_CONTEXT} -n consul --output yaml | kubectl apply -n consul --context ${CLIENT_CONTEXT} --filename -
+kubectl get secret ${HELM_RELEASE_SERVER}-consul-ca-key --context ${SERVER_CONTEXT} -n consul --output yaml | kubectl apply -n consul --context ${CLIENT_CONTEXT} --filename -
+kubectl get secret ${HELM_RELEASE_SERVER}-consul-partitions-acl-token --context ${SERVER_CONTEXT} -n consul --output yaml | kubectl apply -n consul --context ${CLIENT_CONTEXT} --filename -
 ```
 
 5. Edit the 'values-client.yaml' file with the `consul-expose-servers` external IP address and the Kubernetes API Server's URL steps 2 and 3.

@@ -61,6 +61,18 @@ kubectl create secret --context ${CLIENT_CONTEXT} --namespace consul generic lic
 kubectl config use-context ${SERVER_CONTEXT}
 helm install $HELM_RELEASE_SERVER hashicorp/consul -n consul --values values-server.yaml
 ```
+Example:
+```
+% kubectl get pod -n consul
+NAME                                                  READY   STATUS    RESTARTS      AGE
+server-consul-connect-injector-5887fc6cd8-g79rp       1/1     Running   0             15m
+server-consul-mesh-gateway-7f55ddf45f-vdwsn           1/1     Running   0             15m
+server-consul-server-0                                1/1     Running   0             15m
+server-consul-sync-catalog-856dfbcdf7-hpxdq           1/1     Running   1 (14m ago)   15m
+server-consul-webhook-cert-manager-5476fd95d9-svwxp   1/1     Running   0             15m
+```
+
+
 2. Retreive Consul server's `consul-expose-servers` external IP address. Save this address. It will be used to configure the Consul client cluster.
 ```
 kubectl get services --selector="app=consul,component=server" --namespace consul --output jsonpath="{range .items[*]}{@.status.loadBalancer.ingress[*].ip}{end}" --context ${SERVER_CONTEXT}
@@ -101,7 +113,17 @@ git clone https://github.com/hashicorp/consul-k8s.git
 kubectl config use-context ${CLIENT_CONTEXT}
 helm install ${HELM_RELEASE_CLIENT}  ./consul-k8s/charts/consul/ -n consul --values values-client.yaml
 ```
-
+Example:
+```
+% kubectl get pod -n consul
+NAME                                                  READY   STATUS    RESTARTS   AGE
+client-consul-connect-injector-f9c6f8784-ll84q        1/1     Running   0          5m30s
+client-consul-dns-proxy-64555964cd-t56wh              1/1     Running   0          5m30s
+client-consul-dns-proxy-64555964cd-xmzx4              1/1     Running   0          5m30s
+client-consul-mesh-gateway-56855869c6-cxpvn           1/1     Running   0          5m30s
+client-consul-sync-catalog-898c94994-xxfkv            1/1     Running   0          5m30s
+client-consul-webhook-cert-manager-75546cff95-kxtnf   1/1     Running   0          5m30s
+```
 
 6. Deploy sample Fake Service application
 ```

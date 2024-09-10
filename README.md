@@ -73,7 +73,7 @@ kubectl get secret ${HELM_RELEASE_SERVER}-consul-ca-key --context ${SERVER_CONTE
 kubectl get secret ${HELM_RELEASE_SERVER}-consul-partitions-acl-token --context ${SERVER_CONTEXT} --namespace consul --output yaml | kubectl apply --namespace consul --context ${CLIENT_CONTEXT} --filename -
 ```
 
-5. Edit the value-client.yaml file with the `consul-expose-servers` external IP address and the Kubernetes API Server's URL steps 2 and 3.
+5. Edit the 'values-client.yaml' file with the `consul-expose-servers` external IP address and the Kubernetes API Server's URL steps 2 and 3.
 
 ```
 .

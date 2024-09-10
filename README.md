@@ -45,11 +45,13 @@ export CLIENT_CONTEXT=<K8s context for client workload>
 
 2. Add license to Kubernetes secrets on server cluster.
 ```
+kubectl create namespace consul --context ${SERVER_CONTEXT)
 kubectl create secret --context ${SERVER_CONTEXT} --namespace consul generic license --from-file=key=./path/to/license.hclic
 ```
 
 3. Add license to Kubernetes secrets on client cluster.
 ```
+kubectl create namespace consul --context ${CLIENT_CONTEXT}
 kubectl create secret --context ${CLIENT_CONTEXT} --namespace consul generic license --from-file=key=./path/to/license.hclic
 ```
 

@@ -27,6 +27,10 @@ helm repo update hashicorp
 ```
 git clone https://github.com/vanphan24/consul-dns-views.git
 ```
+5. Go into clone directory.
+```
+cd consul-dns-views
+```
   
 # Deploy Consul on each Kubernetes cluster.
 
@@ -91,10 +95,13 @@ externalServers:
 ```
 
 5. Deploy Consul client cluster onto second Kubernetes cluster.
+   Note, this is using the Consul-k8s chart that is cloned: `./consul-k8s/charts/consul/`. You can also just refer to the released chart `hashicorp/consul` instead when Consul GAs.  
 ```
+git clone https://github.com/hashicorp/consul-k8s.git
 kubectl config use-context ${CLIENT_CONTEXT}
 helm install ${HELM_RELEASE_CLIENT}  ./consul-k8s/charts/consul/ -n consul --values values-client.yaml
 ```
+
 
 6. Deploy sample Fake Service application
 ```

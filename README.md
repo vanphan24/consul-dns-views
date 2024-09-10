@@ -166,7 +166,7 @@ data:
 10. Apply new coredns config map file.
 
 ```
-kubectl apply -f coredns-configmap.yaml --context ${CLIENT_CONTEXT}
+kubectl apply -f coredns-custom.yaml --context ${CLIENT_CONTEXT}
 ```
 
 # Test out Consul DNS resolution
